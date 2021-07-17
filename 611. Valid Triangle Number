@@ -1,0 +1,35 @@
+/* 
+LeetCode Problem 611: Valid Triangle Number
+
+I realize I should have used a while loop instead of multiple for loops to optimize the code, but I wanted an accurate representation of my coding ability with minimal help 
+
+The code takes an int array and returns the number of triplets that can make a triangle if the number is taken as the length of a side
+*/
+
+import java.lang.Math;
+import java.util.Arrays;
+
+class Solution {
+    public int triangleNumber(int[] nums) {
+        
+        //sort the array to more easily exclude number combinations that cant make a triangle
+        Arrays.sort(nums, 0, nums.length);
+        
+        int counter = 0;
+        // iterate through each number in a set of three until position k is equal to or greater than the two smaller numbers then the two smaller numbers can no longer equal the following larger numbers and a triangle cant be formed
+        for(int i = 0; i < nums.length - 2; i++){
+            int a = nums[i];
+            for(int j = i+1; j < nums.length - 1; j++) {
+                int b = nums[j];
+                for(int k = j+1; k < nums.length; k++){
+                    int c = nums[k];
+                    if(a == 0){break;}
+                    if(a + b > c){counter += 1;}
+                    if(a + b == c){break;}
+                    if(a + b < c){break;}
+                    }
+                }
+            }
+        return counter;
+    }
+}
